@@ -8,23 +8,15 @@ import {Button} from '../../../components/buttons/button';
 import {TextButton} from '../../../components/buttons/text';
 import {FlexContainer} from '../../../components/containers/flex';
 import {ScreenContainer} from '../../../components/containers/screen';
+import {AuthHeader} from '../../../components/headers/auth';
 import Input from '../../../components/input';
 import {Body3, CaptionText, Title3} from '../../../components/text';
 import {sizes} from '../../../constants/theme/theme';
 
-const ImageContainer = styled(LinearGradient)`
-  height: 290px;
-  width: ${sizes.width}px;
-  align-items: center;
-  justify-content: flex-end;
-`;
-
-export function LoginScreen() {
+export function LoginScreen({navigation}: any) {
   return (
     <ScreenContainer>
-      <ImageContainer colors={['rgba(43, 213, 224, 0)', '#2BD5E0']}>
-        <SchoolIllustration />
-      </ImageContainer>
+      <AuthHeader />
 
       <FlexContainer
         direction="column"
@@ -44,6 +36,7 @@ export function LoginScreen() {
         <TextButton
           text="Forgot Password?"
           style={{marginTop: 8, marginBottom: 24, alignSelf: 'flex-end'}}
+          onPress={() => navigation.navigate('ForgotPasswordScreen')}
         />
         <Button text="Log In to Karkhana" />
 

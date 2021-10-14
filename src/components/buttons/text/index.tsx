@@ -6,6 +6,7 @@ interface ITextButtonProps {
   text: string;
   color?: string;
   style?: StyleProp<ViewStyle>;
+  onPress?(): any;
 }
 
 interface ITextProps {
@@ -23,10 +24,10 @@ const Text = styled.Text<ITextProps>`
 `;
 
 export function TextButton(props: ITextButtonProps) {
-  const {text, color, style} = props;
+  const {text, color, style, onPress} = props;
 
   return (
-    <TouchableOpacity style={style}>
+    <TouchableOpacity style={style} onPress={onPress}>
       <Text color={color}>{text}</Text>
     </TouchableOpacity>
   );

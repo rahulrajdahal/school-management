@@ -1,10 +1,11 @@
 import React from 'react';
-import {TextInput, Text} from 'react-native';
+import {TextInput, Text, StyleProp, ViewStyle} from 'react-native';
 import styled from 'styled-components';
 
 interface IInputProps {
   icon?: JSX.Element;
   placeholder: string;
+  style?: StyleProp<ViewStyle>;
 }
 
 const Container = styled.View`
@@ -21,9 +22,9 @@ const Container = styled.View`
 `;
 
 export default function Input(props: IInputProps) {
-  const {placeholder, icon} = props;
+  const {placeholder, icon, style} = props;
   return (
-    <Container>
+    <Container style={style}>
       {icon}
       <TextInput
         style={{marginLeft: 9.5, width: '100%'}}

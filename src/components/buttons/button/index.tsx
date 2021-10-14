@@ -10,6 +10,7 @@ interface IButtonProps {
   backgroundColor?: string;
   textColor?: string;
   icon?: JSX.Element;
+  onPress?(): any;
 }
 
 interface IContainerProps {
@@ -44,10 +45,14 @@ const Text = styled.Text<ITextProps>`
 `;
 
 export function Button(props: IButtonProps) {
-  const {icon, width, style, text, backgroundColor, textColor} = props;
+  const {icon, width, style, text, backgroundColor, textColor, onPress} = props;
 
   return (
-    <Container width={width} backgroundColor={backgroundColor} style={style}>
+    <Container
+      width={width}
+      backgroundColor={backgroundColor}
+      style={style}
+      onPress={onPress}>
       {icon && icon}
       <Text textColor={textColor} style={{marginLeft: icon ? 8 : 0}}>
         {text}
