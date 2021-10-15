@@ -40,7 +40,7 @@ export function LoginScreen({navigation}: any) {
         />
         <Button
           text="Log In to Karkhana"
-          onPress={() => navigation.navigate('SchedulesScreen')}
+          onPress={() => navigation.navigate('DrawerNavigation')}
         />
 
         <CaptionText marginTop={35} marginBottom={35}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleProp, TouchableOpacity, ViewProps, ViewStyle} from 'react-native';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 interface ITextButtonProps {
   text: string;
@@ -19,8 +19,13 @@ const Text = styled.Text<ITextProps>`
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  text-decoration-line: underline;
   color: ${p => (p.color ? p.color : '#2051e5')};
+
+  ${({underline}: any) =>
+    underline &&
+    css`
+      text-decoration-line: underline;
+    `}
 `;
 
 export function TextButton(props: ITextButtonProps) {

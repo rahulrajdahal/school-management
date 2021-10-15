@@ -30,6 +30,27 @@ export const Title4 = styled.Text<ITextProps>`
   margin-bottom: ${p => (p.marginBottom ? p.marginBottom : 0)}px;
 `;
 
+export const Title5 = styled.Text<ITextProps>`
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: ${p => (p.color ? p.color : '#1c2a3a')};
+  margin-top: ${p => (p.marginTop ? p.marginTop : 0)}px;
+  margin-bottom: ${p => (p.marginBottom ? p.marginBottom : 0)}px;
+`;
+
+export const Body2 = styled.Text<ITextProps>`
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+
+  color: ${p => (p.color ? p.color : '#445668')};
+  margin-top: ${p => (p.marginTop ? p.marginTop : 0)}px;
+  margin-bottom: ${p => (p.marginBottom ? p.marginBottom : 0)}px;
+`;
+
 export const Body3 = styled.Text<ITextProps>`
   font-family: Poppins;
   font-style: normal;
