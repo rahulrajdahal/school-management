@@ -42,8 +42,6 @@ const Text = styled.Text<ITextProps>`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  line-height: 16px;
-  text-align: center;
   color: ${p => (p.textColor ? p.textColor : '#f8fafc')};
 `;
 

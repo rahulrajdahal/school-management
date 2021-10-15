@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 import styled from 'styled-components';
+import {ArrowRightIcon, FemaleIcon, MaleIcon} from '../../../assets/icons';
+import {Button} from '../../buttons/button';
+import {FlexContainer} from '../../containers/flex';
+import {Body3, Title3} from '../../text';
 
 interface ISchedulesCardProps {
   title: string;
@@ -15,15 +19,13 @@ interface IContainerProps {
   backgroundColor: string;
   borderColor: string;
 }
-const Container = styled.View<IContainerProps>`
+const Container = styled.TouchableOpacity<IContainerProps>`
   width: 100%;
-  height: 86px;
   background: ${p => (p.backgroundColor ? p.backgroundColor : '#f5fafb')};
   border-radius: 4px;
   border-left-width: 4px;
   border-left-color: ${p => (p.borderColor ? p.borderColor : '#41a7b3')};
 
-  flex-direction: row;
   justify-content: space-between;
   padding: 12px 16px;
   margin-bottom: 8px;
@@ -57,14 +59,50 @@ const Time = styled.Text`
 export function SchedulesCard(props: ISchedulesCardProps) {
   const {title, body1, body2, time, backgroundColor, borderColor} = props;
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
-    <Container backgroundColor={backgroundColor} borderColor={borderColor}>
-      <View>
-        <Title>{title}</Title>
-        <Body>{body1}</Body>
-        <Body>Class {body2}</Body>
-      </View>
-      <Time>{time}</Time>
+    <Container
+      onPress={() => setIsOpen(prev => !prev)}
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}>
+      <FlexContainer>
+        <View>
+          <Title>{title}</Title>
+          <Body>{body1}</Body>
+          <Body>Class {body2}</Body>
+        </View>
+        <Time>{time}</Time>
+      </FlexContainer>
+
+      {isOpen && (
+        <>
+          <FlexContainer width="50%">
+            <View style={{marginVertical: 20}}>
+              <Title3>22</Title3>
+              <FlexContainer justifyContent="flex-start">
+                <Body3 style={{marginRight: 7}}>boys</Body3>
+                <MaleIcon />
+              </FlexContainer>
+            </View>
+            <View style={{marginVertical: 20}}>
+              <Title3>18</Title3>
+              <FlexContainer justifyContent="flex-start">
+                <Body3>girls</Body3>
+                <FemaleIcon />
+              </FlexContainer>
+            </View>
+          </FlexContainer>
+
+          <Button
+            text="Go to Class"
+            borderRadius={11}
+            backgroundColor="#D3560E"
+            icon={<ArrowRightIcon />}
+            iconPosition="end"
+          />
+        </>
+      )}
     </Container>
   );
 }

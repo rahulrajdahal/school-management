@@ -13,7 +13,6 @@ export const Title3 = styled.Text<ITextProps>`
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
-  text-align: center;
   color: ${p => (p.color ? p.color : '#030913')};
 
   margin-top: ${p => (p.marginTop ? p.marginTop : 0)}px;
@@ -56,7 +55,6 @@ export const Body3 = styled.Text<ITextProps>`
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  line-height: 20px;
   color: #445668;
 
   margin-top: ${p => (p.marginTop ? p.marginTop : 0)}px;

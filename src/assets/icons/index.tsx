@@ -15,3 +15,5 @@ export {default as CogIcon} from './cog.svg';
 export {default as QuestionOutlinedIcon} from './question-outlined.svg';
 export {default as InfoOutlinedIcon} from './info-outlined.svg';
 export {default as ExitOutlinedIcon} from './exit-outlined.svg';
+export {default as MaleIcon} from './male.svg';
+export {default as FemaleIcon} from './female.svg';

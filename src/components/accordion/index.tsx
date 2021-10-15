@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {ChevronDownIcon} from '../../assets/icons';
 import {SchedulesCard} from '../cards/schedule';
 import {FlexContainer} from '../containers/flex';
@@ -13,8 +13,12 @@ interface IAccordionProps {
 export function Accordion(props: IAccordionProps) {
   const {title, data} = props;
 
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+
   return (
-    <>
+    <TouchableOpacity
+      onPress={() => setIsOpen(prev => !prev)}
+      style={{width: '100%'}}>
       <FlexContainer
         width="100%"
         justifyContent="flex-start"
@@ -23,17 +27,18 @@ export function Accordion(props: IAccordionProps) {
         <ChevronDownIcon />
       </FlexContainer>
 
-      {data.map((item: any) => (
-        <SchedulesCard
-          key={item.id}
-          title={item.school}
-          body1={item.chapter}
-          body2={item.class}
-          time={item.time}
-          backgroundColor={item.backgroundColor}
-          borderColor={item.borderColor}
-        />
-      ))}
-    </>
+      {isOpen &&
+        data.map((item: any) => (
+          <SchedulesCard
+            key={item.id}
+            title={item.school}
+            body1={item.chapter}
+            body2={item.class}
+            time={item.time}
+            backgroundColor={item.backgroundColor}
+            borderColor={item.borderColor}
+          />
+        ))}
+    </TouchableOpacity>
   );
 }
