@@ -1,10 +1,12 @@
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {Text} from 'react-native';
+import {LockedoutScreen} from './src/screens/auth/locked';
 import {LoginScreen} from './src/screens/auth/login';
 import {ForgotPasswordScreen} from './src/screens/auth/login/forgot';
-import {ResetPasswordScreen} from './src/screens/auth/Reset';
+import {ResetPasswordScreen} from './src/screens/auth/reset';
+import {WelcomebackScreen} from './src/screens/auth/welcome';
+import {SchedulesScreen} from './src/screens/schedules';
 
 const theme = {
   ...DefaultTheme,
@@ -26,6 +28,9 @@ export function App() {
           name="ResetPasswordScreen"
           component={ResetPasswordScreen}
         />
+        <Stack.Screen name="WelcomebackScreen" component={WelcomebackScreen} />
+        <Stack.Screen name="LockedoutScreen" component={LockedoutScreen} />
+        <Stack.Screen name="SchedulesScreen" component={SchedulesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

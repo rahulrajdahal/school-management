@@ -1,11 +1,10 @@
 import React from 'react';
-import {View, Text} from 'react-native';
 import {LockIcon} from '../../../assets/icons';
 import {Button} from '../../../components/buttons/button';
 import {FlexContainer} from '../../../components/containers/flex';
 import {ScreenContainer} from '../../../components/containers/screen';
 import {AuthHeader} from '../../../components/headers/auth';
-import Input from '../../../components/input';
+import Input from '../../../components/inputs/input';
 import {Body3, Title3} from '../../../components/text';
 
 export function ResetPasswordScreen({navigation}: any) {
@@ -26,7 +25,7 @@ export function ResetPasswordScreen({navigation}: any) {
 
         <Button
           text="Create New Password"
-          onPress={() => console.log('ResetPasswordScreen')}
+          onPress={() => navigation.navigate('WelcomebackScreen')}
           style={{marginTop: 24}}
         />
       </FlexContainer>

@@ -5,17 +5,20 @@ import {sizes} from '../../../constants/theme/theme';
 
 interface IButtonProps {
   text: string;
+  iconPosition?: 'start' | 'end';
   width?: string;
   style?: StyleProp<ViewStyle>;
   backgroundColor?: string;
   textColor?: string;
   icon?: JSX.Element;
   onPress?(): any;
+  borderRadius?: number;
 }
 
 interface IContainerProps {
   width: string;
   backgroundColor: string;
+  borderRadius: number;
 }
 
 const Container = styled.TouchableOpacity<IContainerProps>`
@@ -23,7 +26,7 @@ const Container = styled.TouchableOpacity<IContainerProps>`
   height: 48px;
 
   background: ${p => (p.backgroundColor ? p.backgroundColor : '#2051e5')};
-  border-radius: 8px;
+  border-radius: ${p => (p.borderRadius ? p.borderRadius : 8)}px;
   border: 1px solid #cad5e0;
 
   flex-direction: row;
@@ -45,18 +48,35 @@ const Text = styled.Text<ITextProps>`
 `;
 
 export function Button(props: IButtonProps) {
-  const {icon, width, style, text, backgroundColor, textColor, onPress} = props;
+  const {
+    icon,
+    width,
+    style,
+    text,
+    backgroundColor,
+    textColor,
+    onPress,
+    iconPosition,
+    borderRadius,
+  } = props;
 
   return (
     <Container
       width={width}
       backgroundColor={backgroundColor}
+      borderRadius={borderRadius}
       style={style}
       onPress={onPress}>
-      {icon && icon}
-      <Text textColor={textColor} style={{marginLeft: icon ? 8 : 0}}>
+      {iconPosition === 'start' && icon}
+      <Text
+        textColor={textColor}
+        style={{
+          marginLeft: iconPosition === 'start' ? 8 : 0,
+          marginRight: iconPosition === 'end' ? 6 : 0,
+        }}>
         {text}
       </Text>
+      {iconPosition === 'end' && icon}
     </Container>
   );
 }

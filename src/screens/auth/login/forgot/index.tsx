@@ -6,7 +6,7 @@ import {TextButton} from '../../../../components/buttons/text';
 import {FlexContainer} from '../../../../components/containers/flex';
 import {ScreenContainer} from '../../../../components/containers/screen';
 import {AuthHeader} from '../../../../components/headers/auth';
-import Input from '../../../../components/input';
+import Input from '../../../../components/inputs/input';
 import {Body3, Title3} from '../../../../components/text';
 
 export function ForgotPasswordScreen({navigation}: any) {

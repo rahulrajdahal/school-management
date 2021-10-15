@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, StyleProp, ViewStyle} from 'react-native';
 import styled from 'styled-components';
 import {sizes} from '../../../constants/theme/theme';
 
@@ -13,6 +13,7 @@ interface IScreenContainerProps {
     | 'center'
     | 'flex-start'
     | 'flex-end';
+  style?: StyleProp<ViewStyle>;
 }
 
 interface IContainerProps {
@@ -28,10 +29,13 @@ const Container = styled.View<IContainerProps>`
 `;
 
 export function ScreenContainer(props: IScreenContainerProps) {
-  const {children, alignItems, justifyContent} = props;
+  const {children, alignItems, justifyContent, style} = props;
 
   return (
-    <Container alignItems={alignItems} justifyContent={justifyContent}>
+    <Container
+      style={style}
+      alignItems={alignItems}
+      justifyContent={justifyContent}>
       {children}
     </Container>
   );

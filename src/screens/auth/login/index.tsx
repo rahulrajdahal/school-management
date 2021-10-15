@@ -9,7 +9,7 @@ import {TextButton} from '../../../components/buttons/text';
 import {FlexContainer} from '../../../components/containers/flex';
 import {ScreenContainer} from '../../../components/containers/screen';
 import {AuthHeader} from '../../../components/headers/auth';
-import Input from '../../../components/input';
+import Input from '../../../components/inputs/input';
 import {Body3, CaptionText, Title3} from '../../../components/text';
 import {sizes} from '../../../constants/theme/theme';
 
@@ -38,7 +38,10 @@ export function LoginScreen({navigation}: any) {
           style={{marginTop: 8, marginBottom: 24, alignSelf: 'flex-end'}}
           onPress={() => navigation.navigate('ForgotPasswordScreen')}
         />
-        <Button text="Log In to Karkhana" />
+        <Button
+          text="Log In to Karkhana"
+          onPress={() => navigation.navigate('SchedulesScreen')}
+        />
 
         <CaptionText marginTop={35} marginBottom={35}>
           OR
@@ -46,6 +49,7 @@ export function LoginScreen({navigation}: any) {
 
         <Button
           icon={<GoogleIcon />}
+          iconPosition="start"
           text="Use Google Workspace"
           textColor="#445668"
           backgroundColor="#FFFFFF"
