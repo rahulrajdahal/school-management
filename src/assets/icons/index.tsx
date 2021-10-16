@@ -8,6 +8,7 @@ export {default as ChevronDownIcon} from './chevron-down.svg';
 export {default as StarIcon} from './star.svg';
 export {default as CloseIcon} from './close.svg';
 export {default as CalendarIcon} from './calendar.svg';
+export {default as CalendarImportantIcon} from './calendar-important.svg';
 export {default as ChalkboardIcon} from './chalkboard.svg';
 export {default as BookBookmarkIcon} from './book-bookmark.svg';
 export {default as QuoteLeftIcon} from './quote-left.svg';
