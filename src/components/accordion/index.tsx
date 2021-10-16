@@ -10,11 +10,12 @@ import {Title4} from '../text';
 interface IAccordionProps {
   title: string;
   data: Array<object>;
-  bottomSheet?(): any;
+  cancelSheet?(): any;
+  reportSheet?(): any;
 }
 
 export function Accordion(props: IAccordionProps) {
-  const {title, data, bottomSheet} = props;
+  const {title, data, cancelSheet, reportSheet} = props;
 
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const ref = useRef();
@@ -56,7 +57,8 @@ export function Accordion(props: IAccordionProps) {
               time={item.time}
               backgroundColor={item.backgroundColor}
               borderColor={item.borderColor}
-              bottomSheet={bottomSheet}
+              cancelSheet={cancelSheet}
+              reportSheet={reportSheet}
             />
           ))}
       </TouchableOpacity>

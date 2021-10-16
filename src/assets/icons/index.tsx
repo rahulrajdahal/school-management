@@ -6,6 +6,7 @@ export {default as MenuIcon} from './menu.svg';
 export {default as HistoryIcon} from './history.svg';
 export {default as ChevronDownIcon} from './chevron-down.svg';
 export {default as StarIcon} from './star.svg';
+export {default as StarFillIcon} from './star-fill.svg';
 export {default as CloseIcon} from './close.svg';
 export {default as CalendarIcon} from './calendar.svg';
 export {default as CalendarImportantIcon} from './calendar-important.svg';

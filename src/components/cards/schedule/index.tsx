@@ -22,7 +22,8 @@ interface ISchedulesCardProps {
   time: string;
   backgroundColor: string;
   borderColor?: string;
-  bottomSheet?(): any;
+  cancelSheet?(): any;
+  reportSheet?(): any;
 }
 
 interface IContainerProps {
@@ -68,8 +69,16 @@ const Time = styled.Text`
 `;
 
 export function SchedulesCard(props: ISchedulesCardProps) {
-  const {title, body1, body2, time, backgroundColor, borderColor, bottomSheet} =
-    props;
+  const {
+    title,
+    body1,
+    body2,
+    time,
+    backgroundColor,
+    borderColor,
+    cancelSheet,
+    reportSheet,
+  } = props;
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const ref = useRef();
@@ -87,9 +96,9 @@ export function SchedulesCard(props: ISchedulesCardProps) {
       <FlexContainer
         width="30%"
         style={{alignSelf: 'flex-end', marginVertical: '5%'}}>
-        <IconContainer icon={<StarIcon />} />
+        <IconContainer onPress={reportSheet} icon={<StarIcon />} />
         <IconContainer
-          onPress={bottomSheet}
+          onPress={cancelSheet}
           backgroundColor="#DB025B"
           icon={<CalendarImportantIcon />}
         />

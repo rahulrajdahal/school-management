@@ -1,8 +1,14 @@
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import React, {useCallback, useMemo, useRef, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
+import {interpolate, useAnimatedStyle} from 'react-native-reanimated';
 import {SwipeListView, SwipeRow} from 'react-native-swipe-list-view';
-import {ArrowRightIcon, ChevronDownIcon} from '../../assets/icons';
+import {
+  ArrowRightIcon,
+  ChevronDownIcon,
+  StarFillIcon,
+  StarIcon,
+} from '../../assets/icons';
 import {Accordion} from '../../components/accordion';
 import {Button} from '../../components/buttons/button';
 import {RadioButton} from '../../components/buttons/radio';
@@ -17,17 +23,27 @@ import {Body3, Title3, Title4} from '../../components/text';
 export function SchedulesScreen() {
   const [bottomSheetOpen, setBottomSheetOpen] = useState<boolean>(false);
 
-  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const bottomSheetCancelModalRef = useRef<BottomSheetModal>(null);
+  const bottomSheetReportModalRef = useRef<BottomSheetModal>(null);
 
   // variables
   const snapPoints = useMemo(() => ['25%', '50%'], []);
+  const snapReportPoints = useMemo(() => ['25%', '33%'], []);
 
   // callbacks
-  const handlePresentModalPress = useCallback(() => {
-    bottomSheetModalRef.current?.present();
+  const handlePresentCancelModalPress = useCallback(() => {
+    bottomSheetCancelModalRef.current?.present();
   }, []);
 
-  const handleSheetChanges = useCallback((index: number) => {
+  const handleCancelSheetChanges = useCallback((index: number) => {
+    console.log('handleSheetChanges', index);
+  }, []);
+
+  const handlePresentReportModalPress = useCallback(() => {
+    bottomSheetReportModalRef.current?.present();
+  }, []);
+
+  const handleReportSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
   }, []);
 
@@ -64,6 +80,9 @@ export function SchedulesScreen() {
     {id: 2, option: 'School Event'},
     {id: 3, option: 'Couldn’t get on time'},
   ];
+
+  const [rating, setRating] = useState<number>(-1);
+
   return (
     <BottomSheetModalProvider>
       <ScrollView>
@@ -78,12 +97,14 @@ export function SchedulesScreen() {
           <Accordion
             title="Today"
             data={today}
-            bottomSheet={handlePresentModalPress}
+            reportSheet={handlePresentReportModalPress}
+            cancelSheet={handlePresentCancelModalPress}
           />
           <Accordion
             title="Tomorrow"
             data={today}
-            bottomSheet={handlePresentModalPress}
+            reportSheet={handlePresentReportModalPress}
+            cancelSheet={handlePresentCancelModalPress}
           />
 
           <Banner marginTop={32} marginBottom={32} />
@@ -91,14 +112,15 @@ export function SchedulesScreen() {
           <Accordion
             title="Dec 25th 2016, Tue"
             data={today}
-            bottomSheet={handlePresentModalPress}
+            reportSheet={handlePresentReportModalPress}
+            cancelSheet={handlePresentCancelModalPress}
           />
 
           <BottomSheetModal
-            ref={bottomSheetModalRef}
+            ref={bottomSheetCancelModalRef}
             index={1}
             snapPoints={snapPoints}
-            onChange={handleSheetChanges}>
+            onChange={handleCancelSheetChanges}>
             <View
               style={{
                 flex: 1,
@@ -123,6 +145,57 @@ export function SchedulesScreen() {
                 icon={<ArrowRightIcon />}
                 iconPosition="end"
                 style={{marginTop: 24}}
+              />
+            </View>
+          </BottomSheetModal>
+
+          <BottomSheetModal
+            ref={bottomSheetReportModalRef}
+            index={1}
+            snapPoints={snapReportPoints}
+            onChange={handleReportSheetChanges}>
+            <View
+              style={{
+                flex: 1,
+                paddingHorizontal: 16,
+                borderTopLeftRadius: 24,
+                borderTopRightRadius: 24,
+              }}>
+              <Title3>Delivery Report</Title3>
+              <Body3>
+                How did the class go? Please rate it from a scale of 1 - 5 stars
+                with 5 being the highest.
+              </Body3>
+
+              <FlexContainer
+                width="100%"
+                style={{paddingHorizontal: 46, marginVertical: 24}}>
+                {Array(5)
+                  .fill()
+                  .map((_, i) =>
+                    rating >= i ? (
+                      <StarFillIcon
+                        key={i}
+                        onPress={() => setRating(i)}
+                        width={26}
+                        height={26}
+                      />
+                    ) : (
+                      <StarIcon
+                        key={i}
+                        onPress={() => setRating(i)}
+                        style={{color: '#CAD5E0'}}
+                        width={26}
+                        height={26}
+                      />
+                    ),
+                  )}
+              </FlexContainer>
+
+              <Button
+                text="Send Delivery Report"
+                icon={<ArrowRightIcon />}
+                iconPosition="end"
               />
             </View>
           </BottomSheetModal>
