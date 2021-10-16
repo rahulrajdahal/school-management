@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
+import {Transition, Transitioning} from 'react-native-reanimated';
 import {View} from 'react-native';
 import styled from 'styled-components';
 import {ArrowRightIcon, FemaleIcon, MaleIcon} from '../../../assets/icons';
@@ -21,6 +22,7 @@ interface IContainerProps {
 }
 const Container = styled.TouchableOpacity<IContainerProps>`
   width: 100%;
+  flex-grow: 1;
   background: ${p => (p.backgroundColor ? p.backgroundColor : '#f5fafb')};
   border-radius: 4px;
   border-left-width: 4px;
@@ -60,49 +62,67 @@ export function SchedulesCard(props: ISchedulesCardProps) {
   const {title, body1, body2, time, backgroundColor, borderColor} = props;
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const ref = useRef();
+
+  const transition = (
+    <Transition.Together>
+      <Transition.In type="fade" durationMs={200} />
+      <Transition.Change />
+      <Transition.Out type="fade" durationMs={200} />
+    </Transition.Together>
+  );
 
   return (
-    <Container
-      onPress={() => setIsOpen(prev => !prev)}
-      backgroundColor={backgroundColor}
-      borderColor={borderColor}>
-      <FlexContainer>
-        <View>
-          <Title>{title}</Title>
-          <Body>{body1}</Body>
-          <Body>Class {body2}</Body>
-        </View>
-        <Time>{time}</Time>
-      </FlexContainer>
+    <Transitioning.View
+      ref={ref}
+      transition={transition}
+      style={{flex: 1, flexGrow: 1}}>
+      <Container
+        activeOpacity={0.9}
+        onPress={() => {
+          ref.current.animateNextTransition();
+          setIsOpen(prev => !prev);
+        }}
+        backgroundColor={backgroundColor}
+        borderColor={borderColor}>
+        <FlexContainer alignItems="flex-start">
+          <View>
+            <Title>{title}</Title>
+            <Body>{body1}</Body>
+            <Body>Class {body2}</Body>
+          </View>
+          <Time>{time}</Time>
+        </FlexContainer>
 
-      {isOpen && (
-        <>
-          <FlexContainer width="50%">
-            <View style={{marginVertical: 20}}>
-              <Title3>22</Title3>
-              <FlexContainer justifyContent="flex-start">
-                <Body3 style={{marginRight: 7}}>boys</Body3>
-                <MaleIcon />
-              </FlexContainer>
-            </View>
-            <View style={{marginVertical: 20}}>
-              <Title3>18</Title3>
-              <FlexContainer justifyContent="flex-start">
-                <Body3>girls</Body3>
-                <FemaleIcon />
-              </FlexContainer>
-            </View>
-          </FlexContainer>
+        {isOpen && (
+          <>
+            <FlexContainer width="50%" style={{flexGrow: 1}}>
+              <View style={{marginVertical: 20}}>
+                <Title3>22</Title3>
+                <FlexContainer justifyContent="flex-start">
+                  <Body3 style={{marginRight: 7}}>boys</Body3>
+                  <MaleIcon />
+                </FlexContainer>
+              </View>
+              <View style={{marginVertical: 20}}>
+                <Title3>18</Title3>
+                <FlexContainer justifyContent="flex-start">
+                  <Body3>girls</Body3>
+                  <FemaleIcon />
+                </FlexContainer>
+              </View>
+            </FlexContainer>
 
-          <Button
-            text="Go to Class"
-            borderRadius={11}
-            backgroundColor="#D3560E"
-            icon={<ArrowRightIcon />}
-            iconPosition="end"
-          />
-        </>
-      )}
-    </Container>
+            <Button
+              text="Go to Class"
+              borderRadius={11}
+              backgroundColor="#D3560E"
+              icon={<ArrowRightIcon />}
+              iconPosition="end"
+            />
+          </>
+        )}
+      </Container>
+    </Transitioning.View>
   );
 }
