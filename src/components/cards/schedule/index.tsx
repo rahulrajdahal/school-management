@@ -14,6 +14,8 @@ import {FlexContainer} from '../../containers/flex';
 import {Body3, Title3} from '../../text';
 import {SwipeRow} from 'react-native-swipe-list-view';
 import {IconContainer} from '../../containers/icon';
+import {useNavigation} from '@react-navigation/core';
+import * as ROUTES from '../../../constants/routes';
 
 interface ISchedulesCardProps {
   title: string;
@@ -82,10 +84,11 @@ export function SchedulesCard(props: ISchedulesCardProps) {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const ref = useRef();
+  const navigation = useNavigation();
 
   const transition = (
     <Transition.Together>
-      <Transition.In type="fade" durationMs={200} />
+      <Transition.In type="scale" durationMs={200} />
       <Transition.Change />
       <Transition.Out type="scale" durationMs={200} />
     </Transition.Together>
@@ -96,7 +99,10 @@ export function SchedulesCard(props: ISchedulesCardProps) {
       <FlexContainer
         width="30%"
         style={{alignSelf: 'flex-end', marginVertical: '5%'}}>
-        <IconContainer onPress={reportSheet} icon={<StarIcon />} />
+        <IconContainer
+          onPress={reportSheet}
+          icon={<StarIcon style={{color: '#ffffff'}} />}
+        />
         <IconContainer
           onPress={cancelSheet}
           backgroundColor="#DB025B"
@@ -115,7 +121,7 @@ export function SchedulesCard(props: ISchedulesCardProps) {
           }}
           backgroundColor={backgroundColor}
           borderColor={borderColor}>
-          <FlexContainer alignItems="flex-start">
+          <FlexContainer alignItems="flex-start" style={{flexGrow: 1}}>
             <View>
               <Title>{title}</Title>
               <Body>{body1}</Body>
@@ -149,6 +155,7 @@ export function SchedulesCard(props: ISchedulesCardProps) {
                 backgroundColor={borderColor}
                 icon={<ArrowRightIcon />}
                 iconPosition="end"
+                onPress={() => navigation.navigate(ROUTES.ClassScreen)}
               />
             </>
           )}

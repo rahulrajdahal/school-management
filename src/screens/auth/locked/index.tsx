@@ -8,6 +8,7 @@ import {FlexContainer} from '../../../components/containers/flex';
 import {ScreenContainer} from '../../../components/containers/screen';
 import {OtpInput} from '../../../components/inputs/otp';
 import {Body3, Title3} from '../../../components/text';
+import * as ROUTES from '../../../constants/routes';
 
 const Image = styled.Image`
   width: 100px;
@@ -98,7 +99,7 @@ export function LockedoutScreen({navigation}: any) {
         icon={<ArrowRightIcon />}
         iconPosition="end"
         borderRadius={11}
-        onPress={() => navigation.navigate('SchedulesScreen')}
+        onPress={() => navigation.navigate(ROUTES.SchedulesScreen)}
         style={{marginTop: 24}}
       />
     </ScreenContainer>

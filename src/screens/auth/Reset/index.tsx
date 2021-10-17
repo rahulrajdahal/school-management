@@ -6,6 +6,7 @@ import {ScreenContainer} from '../../../components/containers/screen';
 import {AuthHeader} from '../../../components/headers/auth';
 import Input from '../../../components/inputs/input';
 import {Body3, Title3} from '../../../components/text';
+import * as ROUTES from '../../../constants/routes';
 
 export function ResetPasswordScreen({navigation}: any) {
   return (
@@ -25,7 +26,7 @@ export function ResetPasswordScreen({navigation}: any) {
 
         <Button
           text="Create New Password"
-          onPress={() => navigation.navigate('WelcomebackScreen')}
+          onPress={() => navigation.navigate(ROUTES.WelcomebackScreen)}
           style={{marginTop: 24}}
         />
       </FlexContainer>

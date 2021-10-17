@@ -23,8 +23,11 @@ import {FlexContainer} from '../../components/containers/flex';
 import {ScreenContainer} from '../../components/containers/screen';
 import {AuthHeader} from '../../components/headers/auth';
 import {Body2, Title5} from '../../components/text';
+import * as ROUTES from '../../constants/routes';
 import {sizes} from '../../constants/theme/theme';
-import {SchedulesScreen} from '../../screens/schedules';
+import {ClassScreen} from '../../screens/home/schedules/class';
+import {SchedulesScreen} from '../../screens/home/schedules';
+import {BottomNavigation} from '../bottom';
 
 const Image = styled.Image`
   width: 100px;
@@ -191,12 +194,21 @@ export function DrawerNavigation() {
 
   return (
     <Drawer.Navigator
+      initialRouteName={ROUTES.BottomNavigation}
       screenOptions={{
         headerShown: false,
         drawerStyle: {flex: 1, width: '85%'},
       }}
       drawerContent={({navigation}: any) => getDrawerContent(navigation)}>
-      <Drawer.Screen name="SchedulesScreen" component={SchedulesScreen} />
+      <Drawer.Screen
+        name={ROUTES.BottomNavigation}
+        component={BottomNavigation}
+      />
+      <Drawer.Screen
+        name={ROUTES.SchedulesScreen}
+        component={SchedulesScreen}
+      />
+      {/* <Drawer.Screen name={ROUTES.ClassScreen} component={ClassScreen} /> */}
     </Drawer.Navigator>
   );
 }

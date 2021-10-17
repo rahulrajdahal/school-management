@@ -6,6 +6,7 @@ import {user} from '../../../assets/images';
 import {Button} from '../../../components/buttons/button';
 import {ScreenContainer} from '../../../components/containers/screen';
 import {Body3, Title3} from '../../../components/text';
+import * as ROUTES from '../../../constants/routes';
 
 const Image = styled.Image`
   width: 100px;
@@ -30,7 +31,7 @@ export function WelcomebackScreen({navigation}: any) {
         text="Go to My Schedules"
         icon={<ArrowRightIcon />}
         iconPosition="end"
-        onPress={() => navigation.navigate('LockedoutScreen')}
+        onPress={() => navigation.navigate(ROUTES.LockedoutScreen)}
       />
     </ScreenContainer>
   );

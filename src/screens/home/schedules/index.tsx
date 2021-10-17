@@ -8,17 +8,17 @@ import {
   ChevronDownIcon,
   StarFillIcon,
   StarIcon,
-} from '../../assets/icons';
-import {Accordion} from '../../components/accordion';
-import {Button} from '../../components/buttons/button';
-import {RadioButton} from '../../components/buttons/radio';
-import {RadioGroup} from '../../components/buttons/radio/group';
-import {Banner} from '../../components/cards/banner';
-import {SchedulesCard} from '../../components/cards/schedule';
-import {FlexContainer} from '../../components/containers/flex';
-import {ScreenContainer} from '../../components/containers/screen';
-import {MenuHeader} from '../../components/headers/menu';
-import {Body3, Title3, Title4} from '../../components/text';
+} from '../../../assets/icons';
+import {Accordion} from '../../../components/accordion';
+import {Button} from '../../../components/buttons/button';
+import {RadioButton} from '../../../components/buttons/radio';
+import {RadioGroup} from '../../../components/buttons/radio/group';
+import {Banner} from '../../../components/cards/banner';
+import {SchedulesCard} from '../../../components/cards/schedule';
+import {FlexContainer} from '../../../components/containers/flex';
+import {ScreenContainer} from '../../../components/containers/screen';
+import {MenuHeader} from '../../../components/headers/menu';
+import {Body3, Title3, Title4} from '../../../components/text';
 
 export function SchedulesScreen() {
   const [bottomSheetOpen, setBottomSheetOpen] = useState<boolean>(false);
@@ -179,6 +179,8 @@ export function SchedulesScreen() {
                         onPress={() => setRating(i)}
                         width={26}
                         height={26}
+                        style={{color: '#F77307'}}
+
                       />
                     ) : (
                       <StarIcon

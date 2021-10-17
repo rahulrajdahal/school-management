@@ -7,6 +7,8 @@ import {ForgotPasswordScreen} from './src/screens/auth/login/forgot';
 import {ResetPasswordScreen} from './src/screens/auth/reset';
 import {WelcomebackScreen} from './src/screens/auth/welcome';
 import {DrawerNavigation} from './src/navigations/drawer';
+import * as ROUTES from './src/constants/routes';
+import {BottomNavigation} from './src/navigations/bottom';
 
 const theme = {
   ...DefaultTheme,
@@ -19,18 +21,31 @@ export function App() {
   return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name={ROUTES.LoginScreen} component={LoginScreen} />
         <Stack.Screen
-          name="ForgotPasswordScreen"
+          name={ROUTES.ForgotPasswordScreen}
           component={ForgotPasswordScreen}
         />
         <Stack.Screen
-          name="ResetPasswordScreen"
+          name={ROUTES.ResetPasswordScreen}
           component={ResetPasswordScreen}
         />
-        <Stack.Screen name="WelcomebackScreen" component={WelcomebackScreen} />
-        <Stack.Screen name="LockedoutScreen" component={LockedoutScreen} />
-        <Stack.Screen name="DrawerNavigation" component={DrawerNavigation} />
+        <Stack.Screen
+          name={ROUTES.WelcomebackScreen}
+          component={WelcomebackScreen}
+        />
+        <Stack.Screen
+          name={ROUTES.LockedoutScreen}
+          component={LockedoutScreen}
+        />
+        <Stack.Screen
+          name={ROUTES.DrawerNavigation}
+          component={DrawerNavigation}
+        />
+        <Stack.Screen
+          name={ROUTES.BottomNavigation}
+          component={BottomNavigation}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

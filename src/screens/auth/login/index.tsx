@@ -11,7 +11,7 @@ import {ScreenContainer} from '../../../components/containers/screen';
 import {AuthHeader} from '../../../components/headers/auth';
 import Input from '../../../components/inputs/input';
 import {Body3, CaptionText, Title3} from '../../../components/text';
-import {sizes} from '../../../constants/theme/theme';
+import * as ROUTES from '../../../constants/routes';
 
 export function LoginScreen({navigation}: any) {
   return (
@@ -36,11 +36,11 @@ export function LoginScreen({navigation}: any) {
         <TextButton
           text="Forgot Password?"
           style={{marginTop: 8, marginBottom: 24, alignSelf: 'flex-end'}}
-          onPress={() => navigation.navigate('ForgotPasswordScreen')}
+          onPress={() => navigation.navigate(ROUTES.ForgotPasswordScreen)}
         />
         <Button
           text="Log In to Karkhana"
-          onPress={() => navigation.navigate('DrawerNavigation')}
+          onPress={() => navigation.navigate(ROUTES.DrawerNavigation)}
         />
 
         <CaptionText marginTop={35} marginBottom={35}>

@@ -22,9 +22,9 @@ export function Accordion(props: IAccordionProps) {
 
   const transition = (
     <Transition.Together>
-      <Transition.In type="slide-left" durationMs={500} />
+      <Transition.In type="slide-left" durationMs={600} />
       <Transition.Change />
-      <Transition.Out type="scale" durationMs={500} />
+      <Transition.Out type="slide-top" durationMs={6000} />
     </Transition.Together>
   );
 

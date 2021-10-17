@@ -19,3 +19,7 @@ export {default as InfoOutlinedIcon} from './info-outlined.svg';
 export {default as ExitOutlinedIcon} from './exit-outlined.svg';
 export {default as MaleIcon} from './male.svg';
 export {default as FemaleIcon} from './female.svg';
+export {default as ListCheckIcon} from './list-check.svg';
+export {default as CameraIcon} from './camera.svg';
+export {default as DiceIcon} from './dice.svg';
+export {default as TachometerIcon} from './tachometer.svg';
