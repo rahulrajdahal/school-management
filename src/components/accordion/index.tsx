@@ -51,12 +51,7 @@ export function Accordion(props: IAccordionProps) {
           data.map((item: any) => (
             <SchedulesCard
               key={item.id}
-              title={item.school}
-              body1={item.chapter}
-              body2={item.class}
-              time={item.time}
-              backgroundColor={item.backgroundColor}
-              borderColor={item.borderColor}
+              item={item}
               cancelSheet={cancelSheet}
               reportSheet={reportSheet}
             />

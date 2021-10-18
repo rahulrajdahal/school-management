@@ -7,18 +7,21 @@ import {Title3} from '../../text';
 
 interface IMenuHeaderProps {
   title: string;
+  iconRight?: JSX.Element;
 }
 
 export function MenuHeader(props: IMenuHeaderProps) {
-  const {title} = props;
+  const {title, iconRight} = props;
 
   const navigation = useNavigation();
 
   return (
-    <FlexContainer style={{marginTop: 40}}>
+    <FlexContainer
+      justifyContent={iconRight ? 'space-between' : 'flex-start'}
+      style={{marginTop: 40}}>
       <MenuIcon onPress={() => navigation.openDrawer()} />
-      <Title3>{title}</Title3>
-      <HistoryIcon />
+      <Title3 style={{marginLeft: iconRight ? 0 : '30%'}}>{title}</Title3>
+      {iconRight && iconRight}
     </FlexContainer>
   );
 }

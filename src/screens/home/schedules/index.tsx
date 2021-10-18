@@ -6,6 +6,7 @@ import {SwipeListView, SwipeRow} from 'react-native-swipe-list-view';
 import {
   ArrowRightIcon,
   ChevronDownIcon,
+  HistoryIcon,
   StarFillIcon,
   StarIcon,
 } from '../../../assets/icons';
@@ -50,25 +51,25 @@ export function SchedulesScreen() {
   const today = [
     {
       id: 1,
-      school: 'Paragon School',
-      chapter: 'Introduction to Gravity',
-      class: '7A',
+      title: 'Paragon School',
+      body1: 'Introduction to Gravity',
+      body2: '7A',
       time: '09:00 - 09:30',
     },
     {
       id: 2,
-      school: 'Kastamandap School',
-      chapter: 'Light and Reflections',
-      class: '8C',
+      title: 'Kastamandap School',
+      body1: 'Light and Reflections',
+      body2: '8C',
       time: '11:00 - 12:00',
       backgroundColor: '#FDF6F3',
       borderColor: '#D3560E',
     },
     {
       id: 3,
-      school: 'Paragon School',
-      chapter: 'Advanced Physics',
-      class: '6B',
+      title: 'Paragon School',
+      body1: 'Advanced Physics',
+      body2: '6B',
       time: '14:00 - 15:00',
       backgroundColor: '#F6F3F7',
       borderColor: '#521168',
@@ -92,7 +93,7 @@ export function SchedulesScreen() {
             backgroundColor: bottomSheetOpen ? 'rgba(3, 9, 19, 0.3)' : '#fff',
             opacity: bottomSheetOpen ? 0.3 : 1,
           }}>
-          <MenuHeader title="Schedules" />
+          <MenuHeader title="Schedules" iconRight={<HistoryIcon />} />
 
           <Accordion
             title="Today"
@@ -180,7 +181,6 @@ export function SchedulesScreen() {
                         width={26}
                         height={26}
                         style={{color: '#F77307'}}
-
                       />
                     ) : (
                       <StarIcon

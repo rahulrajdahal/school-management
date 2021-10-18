@@ -18,12 +18,7 @@ import {useNavigation} from '@react-navigation/core';
 import * as ROUTES from '../../../constants/routes';
 
 interface ISchedulesCardProps {
-  title: string;
-  body1: string;
-  body2: string;
-  time: string;
-  backgroundColor: string;
-  borderColor?: string;
+  item: any;
   cancelSheet?(): any;
   reportSheet?(): any;
 }
@@ -71,16 +66,9 @@ const Time = styled.Text`
 `;
 
 export function SchedulesCard(props: ISchedulesCardProps) {
-  const {
-    title,
-    body1,
-    body2,
-    time,
-    backgroundColor,
-    borderColor,
-    cancelSheet,
-    reportSheet,
-  } = props;
+  const {item, cancelSheet, reportSheet} = props;
+
+  const {title, body1, body2, time, backgroundColor, borderColor} = item;
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const ref = useRef();
@@ -155,7 +143,7 @@ export function SchedulesCard(props: ISchedulesCardProps) {
                 backgroundColor={borderColor}
                 icon={<ArrowRightIcon />}
                 iconPosition="end"
-                onPress={() => navigation.navigate(ROUTES.ClassScreen)}
+                onPress={() => navigation.navigate(ROUTES.ClassScreen, item)}
               />
             </>
           )}
