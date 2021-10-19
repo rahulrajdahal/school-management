@@ -25,3 +25,5 @@ export {default as DiceIcon} from './dice.svg';
 export {default as TachometerIcon} from './tachometer.svg';
 export {default as TimeIcon} from './time.svg';
 export {default as ImagesIcon} from './images.svg';
+export {default as BarChartIcon} from './bar-chart.svg';
+export {default as MagnifyIcon} from './magnify.svg';
