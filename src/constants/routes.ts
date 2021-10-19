@@ -10,6 +10,10 @@ export const AttendanceScreen = 'AttendanceScreen';
 export const RandomizerScreen = 'RandomizerScreen';
 export const DeliveryreporthistoryScreen = 'DeliveryreporthistoryScreen';
 export const CameraScreen = 'CameraScreen';
+export const QuotesScreeen = 'QuotesScreeen';
+export const AllQuotesScreen = 'AllQuotesScreen';
+export const FavoriteQuotesScreen = 'FavoriteQuotesScreen';
+
 // navigations
 export const BottomNavigation = 'BottomNavigation';
 export const DrawerNavigation = 'DrawerNavigation';

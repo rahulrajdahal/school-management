@@ -69,6 +69,7 @@ export const CaptionText = styled.Text<ITextProps>`
   font-weight: 500;
   font-size: 12px;
   color: ${p => (p.color ? p.color : '#91a4b7')};
+  text-align:${p => (p.textAlign ? p.textAlign : 'left')}
 
   margin-top: ${p => (p.marginTop ? p.marginTop : 0)}px;
   margin-bottom: ${p => (p.marginBottom ? p.marginBottom : 0)}px;

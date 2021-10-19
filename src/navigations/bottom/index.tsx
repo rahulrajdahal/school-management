@@ -89,6 +89,7 @@ export function BottomNavigation() {
       />
       <Tab.Screen
         name={ROUTES.RandomizerScreen}
+        children={() => <RandomizerScreen random={random} />}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) =>
@@ -102,9 +103,9 @@ export function BottomNavigation() {
                 style={{color: '#91A4B7'}}
               />
             ),
-        }}>
-        {() => <RandomizerScreen random={random} />}
-      </Tab.Screen>
+        }}
+      />
+
       <Tab.Screen
         name={ROUTES.DeliveryreporthistoryScreen}
         component={DeliveryreporthistoryScreen}

@@ -24,7 +24,7 @@ const Avatar = styled.Image`
   resize-mode: cover;
 `;
 
-export function RandomizerScreen({route, random}: any) {
+export function RandomizerScreen({random}: any) {
   const data = [
     {
       id: 1,
@@ -88,7 +88,6 @@ export function RandomizerScreen({route, random}: any) {
 
   useEffect(() => {
     const item = data.filter(item => item.id === random);
-
     setStudent(item[0]);
   }, [random]);
 

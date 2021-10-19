@@ -28,6 +28,7 @@ import {sizes} from '../../constants/theme/theme';
 import {ClassScreen} from '../../screens/home/schedules/class';
 import {SchedulesScreen} from '../../screens/home/schedules';
 import {BottomNavigation} from '../bottom';
+import QuotesScreeen from '../../screens/quotes';
 
 const Image = styled.Image`
   width: 100px;
@@ -105,6 +106,7 @@ export function DrawerNavigation() {
         />
       ),
       menu: 'Quotes',
+      navigateTo: ROUTES.QuotesScreeen,
     },
     {
       id: 5,
@@ -169,7 +171,10 @@ export function DrawerNavigation() {
           {menuItems.map(item => (
             <MenuItemContainer
               key={item.id}
-              onPress={() => setIsActive(item.menu)}
+              onPress={() => {
+                setIsActive(item.menu);
+                navigation.navigate(item.navigateTo);
+              }}
               active={item.menu === isActive ? true : false}>
               <FlexContainer justifyContent="flex-start">
                 {item.icon}
@@ -208,7 +213,7 @@ export function DrawerNavigation() {
         name={ROUTES.SchedulesScreen}
         component={SchedulesScreen}
       />
-      {/* <Drawer.Screen name={ROUTES.ClassScreen} component={ClassScreen} /> */}
+      <Drawer.Screen name={ROUTES.QuotesScreeen} component={QuotesScreeen} />
     </Drawer.Navigator>
   );
 }
