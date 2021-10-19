@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, FlatList, Switch, ViewProps} from 'react-native';
+import {View, Text, FlatList, Switch, ViewProps, TextInput} from 'react-native';
 import styled from 'styled-components';
 import {BarChartIcon} from '../../../assets/icons';
 import {
@@ -93,6 +93,20 @@ export function AttendanceScreen() {
     },
   ];
 
+  const [students, setStudents] = useState(data);
+
+  const handleSearch = (text: any) => {
+    if (text === '') {
+      setStudents(data);
+    } else {
+      const searchText = text.trim().toLowerCase();
+      const filterStudents = data.filter(item =>
+        item.name.includes(searchText),
+      );
+      setStudents(filterStudents);
+    }
+  };
+
   const renderItem = ({item}: any) => (
     <FlexContainer style={{paddingVertical: 12}}>
       <FlexContainer width="70%" justifyContent="flex-start">
@@ -116,11 +130,14 @@ export function AttendanceScreen() {
     <ScreenContainer alignItems="flex-start" style={{paddingHorizontal: 16}}>
       <MenuHeader title="Attendance" iconRight={<BarChartIcon />} />
 
-      <SearchInput style={{marginTop: 32, marginBottom: 24}} />
+      <SearchInput
+        style={{marginTop: 32, marginBottom: 24}}
+        onChangeText={handleSearch}
+      />
 
       <FlatList
         style={{width: '100%'}}
-        data={data}
+        data={students}
         renderItem={renderItem}
         keyExtractor={item => item.id.toString()}
         ItemSeparatorComponent={() => <Divider />}
