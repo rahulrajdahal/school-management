@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {View, Text, FlatList, Switch, ViewProps, TextInput} from 'react-native';
 import styled from 'styled-components';
-import {BarChartIcon} from '../../../assets/icons';
+import {ArrowLeftIcon, BarChartIcon} from '../../../assets/icons';
+import {BeeIllustration} from '../../../assets/illustrations';
 import {
   attendance1,
   attendance2,
@@ -12,11 +13,12 @@ import {
   attendance7,
   attendance8,
 } from '../../../assets/images';
+import {Button} from '../../../components/buttons/button';
 import {FlexContainer} from '../../../components/containers/flex';
 import {ScreenContainer} from '../../../components/containers/screen';
 import {MenuHeader} from '../../../components/headers/menu';
 import {SearchInput} from '../../../components/inputs/search';
-import {Body3, Title5} from '../../../components/text';
+import {Body2, Body3, Title5} from '../../../components/text';
 import {sizes} from '../../../constants/theme/theme';
 
 const Avatar = styled.Image`
@@ -135,14 +137,41 @@ export function AttendanceScreen() {
         onChangeText={handleSearch}
       />
 
-      <FlatList
-        style={{width: '100%'}}
-        data={students}
-        renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
-        ItemSeparatorComponent={() => <Divider />}
-        showsVerticalScrollIndicator={false}
-      />
+      {students.length > 0 ? (
+        <FlatList
+          style={{width: '100%'}}
+          data={students}
+          renderItem={renderItem}
+          keyExtractor={item => item.id.toString()}
+          ItemSeparatorComponent={() => <Divider />}
+          showsVerticalScrollIndicator={false}
+        />
+      ) : (
+        <FlexContainer
+          direction="column"
+          width="100%"
+          style={{
+            alignSelf: 'center',
+            alignContent: 'center',
+            marginVertical: '25%',
+          }}>
+          <BeeIllustration />
+          <Title5 marginTop={20} marginBottom={4}>
+            No Students Found
+          </Title5>
+          <Body2 marginBottom={24} style={{textAlign: 'center', width: '70%'}}>
+            Sorry! No Students with your search query was found.
+          </Body2>
+
+          <Button
+            text="Go Back to Student List"
+            backgroundColor="#E1E8F0"
+            textColor="#1C2A3A"
+            icon={<ArrowLeftIcon />}
+            iconPosition="start"
+          />
+        </FlexContainer>
+      )}
     </ScreenContainer>
   );
 }

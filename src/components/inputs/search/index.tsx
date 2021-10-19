@@ -3,7 +3,10 @@ import {StyleProp, ViewStyle} from 'react-native';
 import styled from 'styled-components';
 import {MagnifyIcon} from '../../../assets/icons';
 
-type ISearchInputProps = {style?: StyleProp<ViewStyle>; onChangeText?(): any};
+type ISearchInputProps = {
+  style?: StyleProp<ViewStyle>;
+  onChangeText?(): () => {};
+};
 
 const Container = styled.View`
   width: 343px;
