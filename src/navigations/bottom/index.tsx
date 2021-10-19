@@ -28,7 +28,7 @@ import {DeliveryreporthistoryScreen} from '../../screens/home/delivery-report-hi
 import {CameraScreen} from '../../screens/home/camera';
 import {SchedulesNavigation} from '../schedules';
 
-const ActiveContainer = styled.View`
+const ActiveContainer = styled.TouchableOpacity`
   width: 48px;
   height: 48px;
   background: #2051e5;
@@ -94,10 +94,7 @@ export function BottomNavigation() {
           tabBarIcon: ({focused}) =>
             focused ? (
               <ActiveContainer>
-                <DiceIcon
-                  onPress={() => setRandom(Math.floor(Math.random() * 8 + 1))}
-                  style={{color: '#F8FAFC'}}
-                />
+                <DiceIcon style={{color: '#F8FAFC'}} />
               </ActiveContainer>
             ) : (
               <DiceIcon

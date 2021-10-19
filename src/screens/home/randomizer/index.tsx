@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import styled from 'styled-components';
+import {ArrowDownIllustration} from '../../../assets/illustrations';
 import {
   attendance1,
   attendance2,
@@ -20,6 +21,7 @@ const Avatar = styled.Image`
   width: 80px;
   height: 80px;
   border-radius: 20px;
+  resize-mode: cover;
 `;
 
 export function RandomizerScreen({route, random}: any) {
@@ -91,7 +93,7 @@ export function RandomizerScreen({route, random}: any) {
   }, [random]);
 
   return (
-    <ScreenContainer>
+    <ScreenContainer style={{paddingHorizontal: 16}}>
       <MenuHeader title="Randomizer" />
       {student && (
         <FlexContainer
@@ -109,6 +111,11 @@ export function RandomizerScreen({route, random}: any) {
           <Body3>{student.presence} sessions present </Body3>
         </FlexContainer>
       )}
+
+      <Body3 marginBottom={12} textAlign="center" style={{width: '50%'}}>
+        Press the Dice Button again to randomize another student
+      </Body3>
+      <ArrowDownIllustration />
     </ScreenContainer>
   );
 }

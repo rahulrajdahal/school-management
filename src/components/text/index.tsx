@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-interface ITextProps {
+type ITextProps = {
   marginTop: number;
   marginBottom: number;
   lineHeight: number;
   color: string;
   fontWeight: number;
-}
+  textAlign: 'left' | 'center' | 'right' | 'justify';
+};
 
 export const Title3 = styled.Text<ITextProps>`
   font-family: Poppins;
@@ -56,6 +57,7 @@ export const Body3 = styled.Text<ITextProps>`
   font-weight: normal;
   font-size: 14px;
   color: #445668;
+  text-align:${p => (p.textAlign ? p.textAlign : 'left')}
 
   margin-top: ${p => (p.marginTop ? p.marginTop : 0)}px;
   margin-bottom: ${p => (p.marginBottom ? p.marginBottom : 0)}px;
