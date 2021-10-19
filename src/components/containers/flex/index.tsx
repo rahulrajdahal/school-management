@@ -15,12 +15,14 @@ interface IFlexContainerProps {
     | 'flex-end';
   style?: StyleProp<ViewStyle>;
   width?: string | number;
+  flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
 }
 
 interface IContainerProps {
   alignItems: string;
   justifyContent: string;
   width: string | number;
+  flexWrap: string;
 }
 const Container = styled.View<IContainerProps>`
   flex-direction:${p => (p.direction ? p.direction : 'row')}
@@ -28,16 +30,26 @@ const Container = styled.View<IContainerProps>`
   justify-content: ${p =>
     p.justifyContent ? p.justifyContent : 'space-between'};
     width:${p => (p.width ? p.width : '100%')};
+ flex-wrap:${p => (p.flexWrap ? p.flexWrap : 'wrap')};
 `;
 
 export function FlexContainer(props: IFlexContainerProps) {
-  const {children, direction, alignItems, justifyContent, style, width} = props;
+  const {
+    children,
+    direction,
+    alignItems,
+    justifyContent,
+    style,
+    width,
+    flexWrap,
+  } = props;
 
   return (
     <Container
       direction={direction}
       alignItems={alignItems}
       justifyContent={justifyContent}
+      flexWrap={flexWrap}
       width={width}
       style={style}>
       {children}

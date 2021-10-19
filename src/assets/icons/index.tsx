@@ -23,3 +23,5 @@ export {default as ListCheckIcon} from './list-check.svg';
 export {default as CameraIcon} from './camera.svg';
 export {default as DiceIcon} from './dice.svg';
 export {default as TachometerIcon} from './tachometer.svg';
+export {default as TimeIcon} from './time.svg';
+export {default as ImagesIcon} from './images.svg';
