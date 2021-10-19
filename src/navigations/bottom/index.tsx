@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home} from '../../screens/home';
 import {
@@ -51,6 +51,8 @@ export function BottomNavigation() {
     },
   };
 
+  const [random, setRandom] = useState(Math.floor(Math.random() * 8 + 1));
+
   return (
     <Tab.Navigator
       initialRouteName={ROUTES.SchedulesScreen}
@@ -87,19 +89,25 @@ export function BottomNavigation() {
       />
       <Tab.Screen
         name={ROUTES.RandomizerScreen}
-        component={RandomizerScreen}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) =>
             focused ? (
               <ActiveContainer>
-                <DiceIcon style={{color: '#F8FAFC'}} />
+                <DiceIcon
+                  onPress={() => setRandom(Math.floor(Math.random() * 8 + 1))}
+                  style={{color: '#F8FAFC'}}
+                />
               </ActiveContainer>
             ) : (
-              <DiceIcon style={{color: '#91A4B7'}} />
+              <DiceIcon
+                onPress={() => setRandom(Math.floor(Math.random() * 8 + 1))}
+                style={{color: '#91A4B7'}}
+              />
             ),
-        }}
-      />
+        }}>
+        {() => <RandomizerScreen random={random} />}
+      </Tab.Screen>
       <Tab.Screen
         name={ROUTES.DeliveryreporthistoryScreen}
         component={DeliveryreporthistoryScreen}
